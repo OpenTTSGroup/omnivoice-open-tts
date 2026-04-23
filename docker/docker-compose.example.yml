@@ -1,0 +1,23 @@
+services:
+  omnivoice:
+    image: ghcr.io/openttsgroup/omnivoice-open-tts:latest
+    container_name: omnivoice
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./voices:/voices:ro
+      - ./cache:/root/.cache
+    environment:
+      OMNIVOICE_MODEL: "k2-fsa/OmniVoice"
+      LOG_LEVEL: "info"
+      # OMNIVOICE_DEVICE: "cpu"     # uncomment to force CPU
+      # OMNIVOICE_DTYPE: "float32"  # required with OMNIVOICE_DEVICE=cpu
+      # OMNIVOICE_LOAD_ASR: "true"  # enable Whisper auto-transcription
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped

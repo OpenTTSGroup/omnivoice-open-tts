@@ -1,0 +1,39 @@
+.git/
+.github/
+.gitignore
+.gitmodules
+
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+.idea/
+.vscode/
+.DS_Store
+
+cache/
+voices/
+tests/
+docs/
+scripts/
+
+*.md
+*.log
+
+# engine/ submodule: keep only what the API needs at runtime
+# (engine/omnivoice/ + engine/pyproject.toml + engine/README.md).
+# The README is referenced by pyproject's `readme = "README.md"`; removing it
+# breaks `pip install /opt/api/engine` at hatchling's metadata validation.
+engine/.git*
+engine/docs/
+engine/examples/
+engine/uv.lock
+engine/LICENSE

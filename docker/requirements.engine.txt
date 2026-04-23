@@ -1,0 +1,11 @@
+# OmniVoice runtime dependencies. The `omnivoice` package itself is installed
+# in the Dockerfile via `pip install --no-deps /opt/api/engine` to skip the
+# heavy dev/training extras declared in its pyproject.toml (gradio,
+# tensorboardX, webdataset). The packages below are what OmniVoice actually
+# imports at inference time.
+transformers>=5.3.0
+accelerate
+pydub
+librosa
+huggingface_hub>=0.23
+hf_transfer>=0.1.6
